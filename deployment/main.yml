@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: Copy module
+      copy:
+        src: ../src/
+        dest: /opt/z-way-server/automation/modules/Ftb/
+
+    - name: Restart z-way-server
+      service:
+        name: z-way-server
+        state: restarted
+      become: True
