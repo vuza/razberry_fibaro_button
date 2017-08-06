@@ -12,7 +12,19 @@ What I would like to do, **but is impossible without this module**: Press the bu
 
 ## Deployment
 
-1. The install the module, place the `src` folder content at ../z-way-server/automation/modules/Ftb/ and restart the app by typing `sudo service z-way-server restart`.
+1. The install the module, place the `src` folder content at `..z-way-server/automation/modules/Ftb/` and restart the app by typing `sudo service z-way-server restart`.
 2. Go to apps at your Razberry's web ui, activate app and chose your button.
 
-## Ansible //TODO
+## Ansible
+
+You can install the app via Ansible, which is convenient because you don't have to touch your Raspberry Pi.
+The Ansible script copies the local files inside the `src` folder to `..z-way-server/automation/modules/Ftb/` at your Raspberry Pi and restarts the z-way-server.
+
+1. Install Ansible at your locale machine
+2. Fix IP entries at deployment/hosts
+3. Type `ansible-playbook deployment/main.yml -i deployment/hosts`
+
+## Improvements
+
+* Make Ansible install z-way-server (if not already installed)
+* Move paths etc. to Ansible config files
