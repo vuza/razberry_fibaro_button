@@ -1,4 +1,4 @@
-# Razberry home automation module for Fibaro "The Button"
+# Razberry home automation module for Fibaro's "The Button"
 
 Although there is [no official support](https://forum.z-wave.me/viewtopic.php?f=3420&t=23976) for Fibaro's "The Button" by Razberry, both can communicate.
 After interviewing Fibaro's "The Button" by a Razberry three buttons get added to the UI.
@@ -28,3 +28,4 @@ The Ansible script copies the local files inside the `src` folder to `..z-way-se
 
 * Make Ansible install z-way-server (if not already installed)
 * Move paths etc. to Ansible config files
+* Better explanation "Why should I use this module?" inclusive screenshots
