@@ -30,33 +30,33 @@ Ftb.prototype.init = function (config) {
   var lastEvent = {}
 
   self.buttons = [{
-    name: 'Switch',
-    deviceType: 'switchBinary',
-    icon: 'switch',
-    level: 'off'
-  }, {
-    name: '2xPress',
-    deviceType: 'switchBinary',
+    name: '1',
+    deviceType: 'toggleButton',
     icon: 'media',
     level: 'on'
   }, {
-    name: '3xPress',
-    deviceType: 'switchBinary',
+    name: '2',
+    deviceType: 'toggleButton',
     icon: 'media',
     level: 'on'
   }, {
-    name: '4xPress',
-    deviceType: 'switchBinary',
+    name: '3',
+    deviceType: 'toggleButton',
     icon: 'media',
     level: 'on'
   }, {
-    name: '5xPress',
-    deviceType: 'switchBinary',
+    name: '4',
+    deviceType: 'toggleButton',
     icon: 'media',
     level: 'on'
   }, {
-    name: 'longPress',
-    deviceType: 'switchBinary',
+    name: '5',
+    deviceType: 'toggleButton',
+    icon: 'media',
+    level: 'on'
+  }, {
+    name: 'long',
+    deviceType: 'toggleButton',
     icon: 'media',
     level: 'on'
   }]
@@ -78,31 +78,22 @@ Ftb.prototype.init = function (config) {
       // Handle event
       switch (parseInt(String(event.get('metrics').level).split('')[1])) {
         case 0:
-          if (self.vDevs['Switch'].get('metrics:level') === 'on') {
-            self.vDevs['Switch'].performCommand('off')
-          } else {
-            self.vDevs['Switch'].performCommand('on')
-          }
+          self.vDevs['1'].performCommand('on')
           break
         case 2:
-          self.vDevs['longPress'].performCommand('off')
-          self.vDevs['longPress'].performCommand('on')
+          self.vDevs['long'].performCommand('on')
           break
         case 3:
-          self.vDevs['2xPress'].performCommand('off')
-          self.vDevs['2xPress'].performCommand('on')
+          self.vDevs['2'].performCommand('on')
           break
         case 4:
-          self.vDevs['3xPress'].performCommand('off')
-          self.vDevs['3xPress'].performCommand('on')
+          self.vDevs['3'].performCommand('on')
           break
         case 5:
-          self.vDevs['4xPress'].performCommand('off')
-          self.vDevs['4xPress'].performCommand('on')
+          self.vDevs['4'].performCommand('on')
           break
         case 6:
-          self.vDevs['5xPress'].performCommand('off')
-          self.vDevs['5xPress'].performCommand('on')
+          self.vDevs['5'].performCommand('no')
           break
         default:
           debugPrint('Unknown event in Ftb app')
@@ -132,9 +123,8 @@ Ftb.prototype.createDummyDevices = function () {
         }
       },
       handler: function (cmd, args) {
-        if (cmd !== 'update' && this.get('deviceType') === 'switchBinary') {
-          this.set('metrics:level', cmd)
-        }
+        // TODO necessary?
+        this.set('metrics:level', cmd)
       },
       moduleId: self.id
     })
